@@ -1,0 +1,24 @@
+kind,mysql_name,oracle_name
+column,entradas_denario.Campanha/Grupo,"""Campanha/Grupo"""
+column,entradas_denario.Data Recebimento SGU,"""Data Recebimento SGU"""
+column,entradas_denario.Data da Aprovação,"""Data da Aprovação"""
+column,entradas_denario.Data da Geração,"""Data da Geração"""
+column,entradas_denario.Região,"""Região"""
+column,entradas_denario.Valor da Doação,"""Valor da Doação"""
+constraint,CK_RawIngestEvent_failed_items_JSON,CK_RAWINGESTEVENT_FAILED_ITEMS
+constraint,CK_entradas_payload_staging_payload_JSON,CK_ENTRADAS_PAYLOAD_STAGING_PA
+constraint,name,NAME_1
+constraint,uq_saldocounter_grupo_projeto_igreja,UQ_SALDOCOUNTER_GRUPO_PROJETO_
+index,cod_igreja,COD_IGREJA_4
+index,id_igreja,ID_IGREJA_1
+index,idx_grupo_reserva_finished_nome_id_teste,IDX_GRUPO_RESERVA_FINISHED_NOM
+index,idx_saldo_data_saida_grupo_igreja,IDX_SALDO_DATA_SAIDA_GRUPO_IGR
+index,idx_unipag_entrada_status_data_id,IDX_UNIPAG_ENTRADA_STATUS_DATA
+index,idx_unipag_grupo_oferta_reserva_id,IDX_UNIPAG_GRUPO_OFERTA_RESERV
+index,idx_unipag_saldo_entrada_grupo_igreja,IDX_UNIPAG_SALDO_ENTRADA_GRUPO
+index,idx_unipag_saldo_grupo_igreja_id,IDX_UNIPAG_SALDO_GRUPO_IGREJA_
+index,idx_unipag_saldo_proj_data_saida_entrada_grupo_igreja,IDX_UNIPAG_SALDO_PROJ_DATA_SAI
+index,idx_unipag_saldo_saida_grupo_igreja,IDX_UNIPAG_SALDO_SAIDA_GRUPO_I
+index,ix_RawIngestEvent_payload_sha256,IX_RAWINGESTEVENT_PAYLOAD_SHA2
+index,oferta_id,OFERTA_ID_1
+index,projeto_id,PROJETO_ID_1

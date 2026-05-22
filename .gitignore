@@ -1,0 +1,6 @@
+**/csv/
+**/logs/
+*.bad
+*.dsc
+*.log
+*.zip
