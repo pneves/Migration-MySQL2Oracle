@@ -61,13 +61,15 @@ Após realizar o download dos diretórios, entre em cada um e execute:
 chmod 755 run_migration.sh
 unzip csv.zip
 ```
-Após isso, basta executar o script de migração:
+Após isso, o script de migração deverá ser editado, substituindo o nome do host e o nome do serviço na linha ORACLE_CONN="host:1521/service_name".
+
+Com o script alterado, basta executá-lo:
 
 ```bash
 ./run_migration.sh
 ```
 
-A migração executa na seguinte ordem:
+A migração será então executada na seguinte ordem:
 
 ```text
 01_tables.sql
