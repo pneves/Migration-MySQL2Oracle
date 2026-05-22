@@ -59,7 +59,7 @@ Após realizar o download dos diretórios, entre em cada um e execute:
 
 ```bash
 chmod 755 run_migration.sh
-unzip cvs.zip
+unzip csv.zip
 ```
 Após isso, basta executar o script de migração:
 
