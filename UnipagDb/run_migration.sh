@@ -9,8 +9,21 @@ CONN="${ORACLE_USER}/${ORACLE_PASS}@${ORACLE_CONN}"
 DDL_DIR="./ddl"
 CTL_DIR="./ctl"
 LOG_DIR="./logs"
+CSV_DIR="./csv"
 
 mkdir -p "$LOG_DIR"
+mkdir -p "$CSV_DIR"
+
+echo "== Extraindo CSVs =="
+
+for archive in csv1.tar.gz csv2.tar.gz; do
+    if [[ -f "$archive" ]]; then
+        echo "Extraindo $archive ..."
+        tar -xzf "$archive" -C "$CSV_DIR"
+    else
+        echo "Arquivo não encontrado: $archive"
+    fi
+done
 
 TABLE="${1:-}"
 

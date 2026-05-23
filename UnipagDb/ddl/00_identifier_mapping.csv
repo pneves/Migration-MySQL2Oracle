@@ -7,7 +7,9 @@ column,entradas_denario.Região,"""Região"""
 column,entradas_denario.Valor da Doação,"""Valor da Doação"""
 constraint,CK_RawIngestEvent_failed_items_JSON,CK_RAWINGESTEVENT_FAILED_ITEMS
 constraint,CK_entradas_payload_staging_payload_JSON,CK_ENTRADAS_PAYLOAD_STAGING_PA
+constraint,CK_ofertas_igrejas_historico_igrejas_apoio_JSON,CK_OFERTAS_IGREJAS_HISTORICO_I
 constraint,name,NAME_1
+constraint,ofertas_igrejas_historico_ibfk_1,OFERTAS_IGREJAS_HISTORICO_IBFK
 constraint,uq_saldocounter_grupo_projeto_igreja,UQ_SALDOCOUNTER_GRUPO_PROJETO_
 index,cod_igreja,COD_IGREJA_4
 index,id_igreja,ID_IGREJA_1
