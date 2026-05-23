@@ -55,11 +55,10 @@ GRUPOSDEDICADASPRD
 
 Para cada schema, o mesmo procedimento deverá ser adotado. O script já contém os nomes dos usuários e senhas a serem utilizadas durante a conexão com o Oracle. 
 
-Após realizar o download dos diretórios, entre em cada um e execute:
+Após realizar o download do pacote, entre em cada diretório (GruposDedicadasPRD e UnipagDb) e execute:
 
 ```bash
 chmod 755 run_migration.sh
-unzip csv.zip
 ```
 Após isso, o script de migração deverá ser editado, substituindo o nome do host e o nome do serviço na linha ORACLE_CONN="host:1521/service_name".
 
