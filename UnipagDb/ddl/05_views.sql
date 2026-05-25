@@ -1,5 +1,7 @@
 -- 05_views.sql
 
+SET DEFINE OFF;
+
 CREATE OR REPLACE VIEW entradas_denario_normalizada_todos AS
 SELECT
     CASE
@@ -36,18 +38,19 @@ SELECT
     TRIM(ed."Região") AS regiao,
     TRIM(ed.IGREJA) AS cenaculo,
     TRIM(ed."Campanha/Grupo") AS grupo,
-    CAST(
+    TO_NUMBER(
         REPLACE(
             REPLACE(
                 REPLACE(ed."Valor da Doação", '.', ''),
-            ',', '.'),
-        ' ', '')
-        AS NUMBER(12,2)
+                ',', '.'
+            ),
+            ' ',
+            ''
+        )
     ) AS valor,
-
     TO_TIMESTAMP(
         ed."Data Recebimento SGU",
         'DD/MM/YYYY HH24:MI:SS'
     ) AS datetime_doacao
-
 FROM entradas_denario ed;
+/

@@ -6,7 +6,6 @@ INTO TABLE ENTRADAS_DENARIO
 APPEND
 FIELDS TERMINATED BY X'1F' OPTIONALLY ENCLOSED BY '"'
 TRAILING NULLCOLS
-PRESERVE BLANKS
 (
   "Data da Geração"                   CHAR(50) NULLIF "Data da Geração"=BLANKS,
   "Data da Aprovação"                 CHAR(50) NULLIF "Data da Aprovação"=BLANKS,

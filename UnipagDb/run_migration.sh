@@ -1,6 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
+export NLS_LANG=.AL32UTF8
 ORACLE_USER="UnipagDb"
 ORACLE_PASS="oppass"
 ORACLE_CONN="host:1521/service_name"
@@ -16,21 +17,37 @@ mkdir -p "$CSV_DIR"
 
 echo "== Extraindo CSVs =="
 
+TMP_CSV_DIR="./.csv_extract_tmp"
+rm -rf "$TMP_CSV_DIR"
+mkdir -p "$TMP_CSV_DIR"
+
 for archive in csv1.tar.gz csv2.tar.gz; do
     if [[ -f "$archive" ]]; then
         echo "Extraindo $archive ..."
-        tar -xzf "$archive" -C "$CSV_DIR"
+        tar -xzf "$archive" -C "$TMP_CSV_DIR"
     else
         echo "Arquivo não encontrado: $archive"
     fi
 done
 
+find "$TMP_CSV_DIR" -type f -name "*.csv" -exec cp -f {} "$CSV_DIR/" \;
+rm -rf "$TMP_CSV_DIR"
+
+echo "CSVs disponíveis:"
+ls -lh "$CSV_DIR" | head
+
 TABLE="${1:-}"
 
 run_sql() {
     local file="$1"
+
     echo "== Executando $file =="
-    sqlplus -s "$CONN" @"$file"
+
+    sqlplus -s "$CONN" <<EOF
+WHENEVER SQLERROR EXIT SQL.SQLCODE
+@"$file"
+EXIT
+EOF
 }
 
 load_one() {
@@ -41,6 +58,11 @@ load_one() {
         exit 1
     fi
 
+    if [[ ! -f "$CSV_DIR/${table}.csv" ]]; then
+        echo "CSV não encontrado: $CSV_DIR/${table}.csv"
+        exit 1
+    fi
+
     echo "== Carregando $table =="
 
     sqlldr "$CONN" \
@@ -48,7 +70,6 @@ load_one() {
         log="$LOG_DIR/${table}.log" \
         bad="$LOG_DIR/${table}.bad" \
         discard="$LOG_DIR/${table}.dsc" \
-        direct=false \
         errors=100000 \
         readsize=20971520 \
         bindsize=20971520 \

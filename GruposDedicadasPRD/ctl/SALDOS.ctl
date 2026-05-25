@@ -6,7 +6,6 @@ INTO TABLE SALDOS
 APPEND
 FIELDS TERMINATED BY X'1F' OPTIONALLY ENCLOSED BY '"'
 TRAILING NULLCOLS
-PRESERVE BLANKS
 (
   ID                                  INTEGER EXTERNAL NULLIF ID=BLANKS,
   ID_GRUPO                            INTEGER EXTERNAL NULLIF ID_GRUPO=BLANKS,
@@ -16,6 +15,6 @@ PRESERVE BLANKS
   SALDO                               DECIMAL EXTERNAL NULLIF SALDO=BLANKS,
   ENTRADA                             DECIMAL EXTERNAL NULLIF ENTRADA=BLANKS,
   SAIDA                               DECIMAL EXTERNAL NULLIF SAIDA=BLANKS,
-  VALUE                               DECIMAL EXTERNAL NULLIF VALUE=BLANKS,
-  DATA                                TIMESTAMP "YYYY-MM-DD HH24:MI:SS.FF" NULLIF DATA=BLANKS
+  "value"                             DECIMAL EXTERNAL NULLIF "value"=BLANKS,
+  "data"                              TIMESTAMP "YYYY-MM-DD HH24:MI:SS.FF" NULLIF "data"=BLANKS
 )

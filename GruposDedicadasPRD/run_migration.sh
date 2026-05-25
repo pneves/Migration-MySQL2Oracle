@@ -1,7 +1,8 @@
 #!/bin/bash
 set -euo pipefail
 
-ORACLE_USER="UnipagDb"
+export NLS_LANG=.AL32UTF8
+ORACLE_USER="GruposDedicadasPRD"
 ORACLE_PASS="oppass"
 ORACLE_CONN="host:1521/service_name"
 CONN="${ORACLE_USER}/${ORACLE_PASS}@${ORACLE_CONN}"
@@ -19,7 +20,7 @@ echo "== Extraindo CSVs =="
 for archive in *.tar.gz; do
     if [[ -f "$archive" ]]; then
         echo "Extraindo $archive ..."
-        tar -xzf "$archive" -C "$CSV_DIR"
+        tar -xzf "$archive" -C "$CSV_DIR" --strip-components=1
     else
         echo "Arquivo não encontrado: $archive"
     fi
@@ -30,7 +31,11 @@ TABLE="${1:-}"
 run_sql() {
     local file="$1"
     echo "== Executando $file =="
-    sqlplus -s "$CONN" @"$file"
+    sqlplus -s "$CONN" <<EOF
+WHENEVER SQLERROR EXIT SQL.SQLCODE
+@"$file"
+EXIT
+EOF
 }
 
 load_one() {
