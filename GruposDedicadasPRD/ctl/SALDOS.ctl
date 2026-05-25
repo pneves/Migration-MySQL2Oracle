@@ -15,6 +15,6 @@ TRAILING NULLCOLS
   SALDO                               DECIMAL EXTERNAL NULLIF SALDO=BLANKS,
   ENTRADA                             DECIMAL EXTERNAL NULLIF ENTRADA=BLANKS,
   SAIDA                               DECIMAL EXTERNAL NULLIF SAIDA=BLANKS,
-  "value"                             DECIMAL EXTERNAL NULLIF "value"=BLANKS,
-  "data"                              TIMESTAMP "YYYY-MM-DD HH24:MI:SS.FF" NULLIF "data"=BLANKS
+  "VALUE"                             DECIMAL EXTERNAL NULLIF "VALUE"=BLANKS,
+  "DATA"                              TIMESTAMP "YYYY-MM-DD HH24:MI:SS.FF" NULLIF "DATA"=BLANKS
 )
