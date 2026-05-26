@@ -55,14 +55,19 @@ GRUPOSDEDICADASPRD
 
 Para cada schema, o mesmo procedimento deverá ser adotado. O script já contém os nomes dos usuários e senhas a serem utilizadas durante a conexão com o Oracle. 
 
-Após realizar o download do pacote, entre em cada diretório (GruposDedicadasPRD e UnipagDb) e execute:
+Para download do pacote, execute:
 
 ```bash
-chmod 755 run_migration.sh
-```
-Após isso, o script de migração deverá ser editado, substituindo o nome do host e o nome do serviço na linha ORACLE_CONN="host:1521/service_name".
+wget https://github.com/pneves/Migration-MySQL2Oracle/archive/refs/heads/main.tar.gz
 
-Com o script alterado, basta executá-lo:
+tar xzf main.tar.gz
+
+cd Migration-MySQL2Oracle-main
+```
+
+Após realizar o download do pacote, entre em cada diretório (GruposDedicadasPRD e UnipagDb) e edite  o script de migração, substituindo o nome do host e o nome do serviço na linha ORACLE_CONN="host:1521/service_name".
+
+Com o script alterado e com os usuários já criados, basta executar:
 
 ```bash
 ./run_migration.sh
